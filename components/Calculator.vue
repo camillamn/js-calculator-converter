@@ -3,11 +3,12 @@
 		<h1>Kalkulator</h1>
 		<div class="calculator">
 			<div class="display">
-				123
+				{{ display }}
 			</div>
 			<div class="buttons">
 				<div class="button-row" v-for="row in buttonRows">
 					<div
+						@click="buttonClick(button)"
 						:class="{operator: button.type == 'operator'}"
 						class="button" 
 						v-for="button in row">
@@ -21,7 +22,17 @@
 
 <script>
 	export default {
+		methods: {
+			buttonClick(button) {
+				if(button.type == 'number') {
+					this.display += button.text;
+				} else if (button.text == 'C') {
+					this.display = '';
+				}
+			}
+		},
 		data: () => ({
+			display: '',
 			buttonRows: [
 				[{ 
 					text: 'C',
@@ -94,21 +105,29 @@
 body {
 	width: 100vw;
 	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
 .calculator {
 	width: 30vw;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;
+	background-color:bisque
 }
 
 .display {
-	background-color: darkgray;
+	height: 2em;
 	color: white;
 	text-align: right;
-	padding: 1em;
+	padding: 0.5em;
 	border-radius: 5%;
+	background-color: darkgray;
+	font-size: 1.5em;
 }
+
 .buttons {
 text-align: center;
 }
