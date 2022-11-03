@@ -1,25 +1,25 @@
 <template>
-	<main>
-		<h1>Kalkulator</h1>
-		<div class="calculator">
-			<div class="display"></div>
-		</div>
-	</main>
+	<Calculator/>
+	<Converter/>
 </template>
 
 <script>
+	import Calculator from '../components/Calculator.vue'
+	import Converter from '../components/Converter.vue'
 
+	export default {
+		components: {
+			Calculator,
+			Converter
+		}
+	}
 </script>
 
-<style scoped>
-	.calculator {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-auto-rows: minmax(50px, auto);
-	}
+<style>
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
 
-	.display {
-		grid-column: 1 / 5;
-		background-color: aquamarine;
-	}
 </style>
