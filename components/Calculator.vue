@@ -25,16 +25,25 @@
 		methods: {
 			buttonClick(button) {
 				if(button.type == 'number') {
+					if (this.previousValue === null) {
+						this.previousValue = Number(this.display);
+						this.display = '';
+					}
 					this.display += button.text;
 				} else if (button.text == 'C') {
 					this.display = '';
 				} else if (button.text == '+/-') {
 					this.display *= -1;
+				} else if (button.type == 'operator') {
+					this.previousValue = null;
+					this.currentOperator = button.text;
 				}
 			}
 		},
 		data: () => ({
 			display: '',
+			previousValue: '',
+			currentOperator: '',
 			buttonRows: [
 				[{ 
 					text: 'C',
