@@ -29,12 +29,19 @@
 						this.previousValue = Number(this.display);
 						this.display = '';
 					}
+					if (button.text == '.' && this.display.includes('.')) return;
 					this.display += button.text;
 				} else if (button.text == 'C') {
 					this.display = '';
 				} else if (button.text == '+/-') {
 					this.display *= -1;
+				} else if (button.text == '=') {
+					this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
+					this.currentOperator = '';
 				} else if (button.type == 'operator') {
+					if (this.currentOperator) {
+						this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
+					}
 					this.previousValue = null;
 					this.currentOperator = button.text;
 				}
@@ -44,6 +51,12 @@
 			display: '',
 			previousValue: '',
 			currentOperator: '',
+			operations: {
+				'÷': (a, b) => a / b,
+				'×': (a, b) => a * b,
+				'-': (a, b) => a - b,
+				'+': (a, b) => a + b,
+			},
 			buttonRows: [
 				[{ 
 					text: 'C',
@@ -55,7 +68,7 @@
 					text: '%',
 					type: 'special'
 				}, {
-					text: '/',
+					text: '÷',
 					type: 'operator'
 				}],
 				[{ 
@@ -68,7 +81,7 @@
 					text: '3',
 					type: 'number'
 				}, {
-					text: '*',
+					text: '×',
 					type: 'operator'
 				}],
 				[{ 
