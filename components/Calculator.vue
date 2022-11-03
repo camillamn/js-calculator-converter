@@ -28,6 +28,8 @@
 					this.display += button.text;
 				} else if (button.text == 'C') {
 					this.display = '';
+				} else if (button.text == '+/-') {
+					this.display *= -1;
 				}
 			}
 		},
@@ -38,7 +40,7 @@
 					text: 'C',
 					type: 'special'
 				}, {
-					text: '()',
+					text: '+/-',
 					type: 'special'
 				}, { 
 					text: '%',
