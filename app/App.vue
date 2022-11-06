@@ -5,12 +5,12 @@
 
 <script>
 	import Calculator from '../components/Calculator.vue'
-	import Converter from '../components/Converter.vue'
+	// import Converter from '../components/Converter.vue'
 
 	export default {
 		components: {
 			Calculator,
-			Converter
+			// Converter
 		}
 	}
 </script>

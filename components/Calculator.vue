@@ -1,6 +1,6 @@
 <template>
 		<main>
-		<h1>Kalkulator</h1>
+		<h2>Kalkulator</h2>
 		<div class="calculator">
 			<div class="display">
 				{{ display }}
@@ -9,7 +9,7 @@
 				<div class="button-row" v-for="row in buttonRows">
 					<div
 						@click="buttonClick(button)"
-						:class="{operator: button.type == 'operator'}"
+						:class="{operator: button.type == 'operator'}, {special: button.type == 'special'}"
 						class="button" 
 						v-for="button in row">
 						{{ button.text }}
@@ -22,6 +22,9 @@
 
 <script>
 	export default {
+		// created() {
+		// 	window.addEventListener('keyup', this.handleKeyup);
+		// },
 		methods: {
 			buttonClick(button) {
 				if(button.type == 'number') {
@@ -35,18 +38,72 @@
 					this.display = '';
 				} else if (button.text == '+/-') {
 					this.display *= -1;
+				} else if (button.text == '%') {
+					this.display /= 100;
 				} else if (button.text == '=') {
 					this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
 					this.currentOperator = '';
 				} else if (button.type == 'operator') {
 					if (this.currentOperator) {
 						this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
-					}
+					};
 					this.previousValue = null;
 					this.currentOperator = button.text;
 				}
 			}
 		},
+		// clearResult() {
+		// 		this.sequence = '';
+		// 		this.total = 0;
+		// 		this.showingResult = false;
+		// 	},
+
+		// 	calculateResult() {
+		// 		this.total = eval(this.sequence)
+		// 	},
+			
+		// 	handleInput(input) {
+		// 		this.sequence += input;
+		// 	},
+			
+			// showResult() {
+			// 	this.calculateResult();
+			// 	this.showingResult = true;
+			// },
+		// handleKeyup(event) {
+		// 		switch(event.key) {
+		// 			case '0':
+		// 			case '1':
+		// 			case '2':
+		// 			case '3':
+		// 			case '4':
+		// 			case '5':
+		// 			case '6':
+		// 			case '7':
+		// 			case '8':
+		// 			case '9':
+		// 				this.handleInput(event.key)
+		// 				break;
+		// 			case '+':
+		// 			case '-':
+		// 			case '/':
+		// 			case '*':
+		// 				this.handleOperatorInput(event.key)
+		// 				break;
+		// 			case '.':
+		// 			case ',':
+		// 				this.handleInput('.')
+		// 				break;
+		// 			case '=':
+		// 			case 'Enter':
+		// 				this.handleEqualsInput()
+		// 				break;
+		// 			case 'Escape':
+		// 			case 'Backspace':
+		// 				this.clearResult()
+		// 				break;
+		// 		}
+		// 	},
 		data: () => ({
 			display: '',
 			previousValue: '',
@@ -60,13 +117,14 @@
 			buttonRows: [
 				[{ 
 					text: 'C',
-					type: 'special'
+					type: 'special',
+					case: 'Escape'
 				}, {
 					text: '+/-',
 					type: 'special'
 				}, { 
 					text: '%',
-					type: 'special'
+					type: 'operator'
 				}, {
 					text: '÷',
 					type: 'operator'
