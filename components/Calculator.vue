@@ -29,54 +29,54 @@
 			handleWindowKeyUp(event) {
 				switch(event.key) {
 					case '1':
-						this.previousValue = 1;
-						this.display = '';
+						this.previousValue = '1';
+						this.previousValue = Number(this.display);
 						this.display += '1';
 					break;
 					case "2":
 						this.previousValue = 2;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "2";
 					break;
 					case "3":
 						this.previousValue = 3;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "3";
 					break;
 					case "4":
 						this.previousValue = 4;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "4";
 					break;
 					case "5":
 						this.previousValue = 5;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "5";
 					break;
 					case "6":
 						this.previousValue = 6;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "6";
 					break;
 					case "7":
 						this.previousValue = 7;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "7";
 					break;
 					case "8":
 						this.previousValue = 8;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "8";
 					break;
 					case "9":
 						this.previousValue = 9;
-						this.display = '';
+						this.previousValue = Number(this.display);
 						this.display += "9";
 					break;
 					case "0":
 						this.previousValue = 0;
-						this.display = '';
-						this.display += "9";
+						this.previousValue = Number(this.display);
+						this.display += "0";
 					break;
 					case 'Escape':
 					case 'Backspace':
@@ -85,8 +85,11 @@
 					case '%':
 						this.display /= 100;
 					break;
-					case '';
-				}
+					case '.':
+						this.previousValue = '.';
+						this.previousValue = Number(this.display);
+						this.display += '.';				
+					}
 			},
 
 			buttonClick(button) {
@@ -232,7 +235,7 @@ body {
 }
 
 .buttons {
-text-align: center;
+	text-align: center;
 }
 
 .button-row {
@@ -246,7 +249,7 @@ text-align: center;
 	border-radius: 25%;
 	margin: 0.2em;
 	width: 100%;
-	padding: 0.5em;
+	padding: 0.2em;
 	background-color: aquamarine;
 }
 

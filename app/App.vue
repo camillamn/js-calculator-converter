@@ -1,6 +1,6 @@
 <template>
 	<Calculator/>
-	<Converter/>
+	<!-- <Converter/> -->
 </template>
 
 <script>
