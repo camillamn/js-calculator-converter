@@ -1,6 +1,5 @@
 <template>
 		<main>
-		<h2>Kalkulator</h2>
 		<div class="calculator">
 			<div class="display">
 				{{ display }}
@@ -22,10 +21,74 @@
 
 <script>
 	export default {
-		// created() {
-		// 	window.addEventListener('keyup', this.handleKeyup);
-		// },
+		created() {
+			window.addEventListener('keyup', this.handleWindowKeyUp)
+		},
+
 		methods: {
+			handleWindowKeyUp(event) {
+				switch(event.key) {
+					case '1':
+						this.previousValue = 1;
+						this.display = '';
+						this.display += '1';
+					break;
+					case "2":
+						this.previousValue = 2;
+						this.display = '';
+						this.display += "2";
+					break;
+					case "3":
+						this.previousValue = 3;
+						this.display = '';
+						this.display += "3";
+					break;
+					case "4":
+						this.previousValue = 4;
+						this.display = '';
+						this.display += "4";
+					break;
+					case "5":
+						this.previousValue = 5;
+						this.display = '';
+						this.display += "5";
+					break;
+					case "6":
+						this.previousValue = 6;
+						this.display = '';
+						this.display += "6";
+					break;
+					case "7":
+						this.previousValue = 7;
+						this.display = '';
+						this.display += "7";
+					break;
+					case "8":
+						this.previousValue = 8;
+						this.display = '';
+						this.display += "8";
+					break;
+					case "9":
+						this.previousValue = 9;
+						this.display = '';
+						this.display += "9";
+					break;
+					case "0":
+						this.previousValue = 0;
+						this.display = '';
+						this.display += "9";
+					break;
+					case 'Escape':
+					case 'Backspace':
+						this.display = '';
+					break;
+					case '%':
+						this.display /= 100;
+					break;
+					
+				}
+			},
+
 			buttonClick(button) {
 				if(button.type == 'number') {
 					if (this.previousValue === null) {
@@ -50,137 +113,95 @@
 					this.previousValue = null;
 					this.currentOperator = button.text;
 				}
-			}
-		},
-		// clearResult() {
-		// 		this.sequence = '';
-		// 		this.total = 0;
-		// 		this.showingResult = false;
-		// 	},
-
-		// 	calculateResult() {
-		// 		this.total = eval(this.sequence)
-		// 	},
-			
-		// 	handleInput(input) {
-		// 		this.sequence += input;
-		// 	},
-			
-			// showResult() {
-			// 	this.calculateResult();
-			// 	this.showingResult = true;
-			// },
-		// handleKeyup(event) {
-		// 		switch(event.key) {
-		// 			case '0':
-		// 			case '1':
-		// 			case '2':
-		// 			case '3':
-		// 			case '4':
-		// 			case '5':
-		// 			case '6':
-		// 			case '7':
-		// 			case '8':
-		// 			case '9':
-		// 				this.handleInput(event.key)
-		// 				break;
-		// 			case '+':
-		// 			case '-':
-		// 			case '/':
-		// 			case '*':
-		// 				this.handleOperatorInput(event.key)
-		// 				break;
-		// 			case '.':
-		// 			case ',':
-		// 				this.handleInput('.')
-		// 				break;
-		// 			case '=':
-		// 			case 'Enter':
-		// 				this.handleEqualsInput()
-		// 				break;
-		// 			case 'Escape':
-		// 			case 'Backspace':
-		// 				this.clearResult()
-		// 				break;
-		// 		}
-		// 	},
-		data: () => ({
-			display: '',
-			previousValue: '',
-			currentOperator: '',
-			operations: {
-				'÷': (a, b) => a / b,
-				'×': (a, b) => a * b,
-				'-': (a, b) => a - b,
-				'+': (a, b) => a + b,
 			},
-			buttonRows: [
-				[{ 
-					text: 'C',
-					type: 'special',
-					case: 'Escape'
-				}, {
-					text: '+/-',
-					type: 'special'
-				}, { 
-					text: '%',
-					type: 'operator'
-				}, {
-					text: '÷',
-					type: 'operator'
-				}],
-				[{ 
-					text: '1',
-					type: 'number'
-				}, {
-					text: '2',
-					type: 'number'
-				}, { 
-					text: '3',
-					type: 'number'
-				}, {
-					text: '×',
-					type: 'operator'
-				}],
-				[{ 
-					text: '4',
-					type: 'number'
-				}, {
-					text: '5',
-					type: 'number'
-				}, { 
-					text: '6',
-					type: 'number'
-				}, {
-					text: '-',
-					type: 'operator'
-				}],
-				[{ 
-					text: '7',
-					type: 'number'
-				}, {
-					text: '8',
-					type: 'number'
-				}, { 
-					text: '9',
-					type: 'number'
-				}, {
-					text: '+',
-					type: 'operator'
-				}],
-				[{ 
-					text: '0',
-					type: 'number'
-				}, {
-					text: '.',
-					type: 'number'
-				}, { 
-					text: '=',
-					type: 'operator'
-				}]
-			]
-		})
-	}
+			},
+			data: () => ({
+				display: '',
+				previousValue: '',
+				currentOperator: '',
+
+				operations: {
+					'÷': (a, b) => a / b,
+					'×': (a, b) => a * b,
+					'-': (a, b) => a - b,
+					'+': (a, b) => a + b,
+				},
+				buttonRows: [
+					/* First row */
+					[{ 
+						text: 'C',
+						type: 'special',
+					}, {
+						text: '+/-',
+						type: 'special'
+					}, { 
+						text: '%',
+						type: 'special'
+					}, {
+						text: '÷',
+						type: 'operator'
+					}],
+
+					/* Second row */
+					[{ 
+						text: '1',
+						type: 'number',
+						key: '1'
+					}, {
+						text: '2',
+						type: 'number'
+					}, { 
+						text: '3',
+						type: 'number'
+					}, {
+						text: '×',
+						type: 'operator'
+					}],
+
+					/* Third row */
+					[{ 
+						text: '4',
+						type: 'number'
+					}, {
+						text: '5',
+						type: 'number'
+					}, { 
+						text: '6',
+						type: 'number'
+					}, {
+						text: '-',
+						type: 'operator'
+					}],
+
+					/* Forth row */
+					[{ 
+						text: '7',
+						type: 'number'
+					}, {
+						text: '8',
+						type: 'number'
+					}, { 
+						text: '9',
+						type: 'number'
+					}, {
+						text: '+',
+						type: 'operator'
+					}],
+					
+					/* Fifth row */
+					[{ 
+						text: '0',
+						type: 'number'
+					}, {
+						text: '.',
+						type: 'number'
+					}, { 
+						text: '=',
+						type: 'operator'
+					}]
+				],
+			})
+		}
 </script>
 
 <style>
@@ -197,7 +218,7 @@ body {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;
-	background-color:bisque
+	background-color: lightgrey;
 }
 
 .display {
@@ -237,6 +258,7 @@ text-align: center;
 .button:active,
 .button:hover {
 	background-color: rgb(40, 145, 110);
+	cursor: pointer;
 }
 
 </style>
