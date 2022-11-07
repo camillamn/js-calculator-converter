@@ -85,7 +85,7 @@
 					case '%':
 						this.display /= 100;
 					break;
-					
+					case '';
 				}
 			},
 
