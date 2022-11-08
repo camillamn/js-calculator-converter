@@ -23,7 +23,7 @@
 			return {
 				lengthConvert:[
 					{
-						id: 'Milimeter',
+						id: 'Millimeter',
 						input: '0'
 					},
 					{
@@ -31,11 +31,11 @@
 						input: '0'
 					},
 					{
-						id: 'Meter',
+						id: 'Decimeter',
 						input: '0'
 					},
 					{
-						id: 'Kilometer',
+						id: 'Meter',
 						input: '0'
 					},
 				]
@@ -45,30 +45,30 @@
 		methods: {
 			lengthConverter(source) {
 				let vm = this,
-					milimeter = vm.lengthConvert[0],
+					millimeter = vm.lengthConvert[0],
 					centimeter = vm.lengthConvert[1],
-					meter = vm.lengthConvert[2],
-					kilometer = vm.lengthConvert[3];
+					decimeter = vm.lengthConvert[2],
+					meter = vm.lengthConvert[3];
 
-				if (source =='milimeter') {
-					centimeter.input=(milimeter.input/10).toFixed(2);
-					meter.input=(milimeter.input/100).toFixed(2);
-					kilometer.input=(milimeter.input/10000).toFixed(2);
+				if (source =='millimeter') {
+					centimeter.input=(millimeter.input/10).toFixed(2);
+					decimeter.input=(millimeter.input/100).toFixed(2);
+					meter.input=(millimeter.input/1000).toFixed(2);
 				}
 				if (source =='centimeter') {
-					milimeter.input=(centimeter.input*10).toFixed(2);
-					meter.input=(centimeter.input/10).toFixed(2);
-					kilometer.input=(centimeter.input/10000).toFixed(2);
+					millimeter.input=(centimeter.input*10).toFixed(2);
+					decimeter.input=(centimeter.input/10).toFixed(2);
+					meter.input=(centimeter.input/100).toFixed(2);
 				}
-				if (source=='meter') {
-					milimeter.input=(meter.input/10).toFixed(2);
-					centimeter.input=(meter.input/100).toFixed(2);
-					kilometer.input=(meter.input/10000).toFixed(2);
+				if (source=='decimeter') {
+					millimeter.input=(decimeter.input*100).toFixed(2);
+					centimeter.input=(decimeter.input*10).toFixed(2);
+					meter.input=(decimeter.input/10).toFixed(2);
 				};
-				if (source=='kilometer') {
-					milimeter.input=(kilometer.input/10).toFixed(2);
-					centimeter.input=(kilometer.input/100).toFixed(2);
-					meter.input=(kilometer.input/10000).toFixed(2);
+				if (source=='meter') {
+					millimeter.input=(meter.input*1000).toFixed(2);
+					centimeter.input=(meter.input*100).toFixed(2);
+					decimeter.input=(meter.input*10).toFixed(2);
 				};
 			}
 		}
