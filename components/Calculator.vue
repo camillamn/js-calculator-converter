@@ -1,3 +1,5 @@
+<!-- I have been inspired by https://www.youtube.com/watch?v=MRsDx3sFKOs and borrowed parts of the setup from this video-->
+
 <template>
 		<main>
 		<div class="calculator">
@@ -28,67 +30,92 @@
 		methods: {
 			handleWindowKeyUp(event) {
 				switch(event.key) {
+
+					/* 	numbers-keys	 */
 					case '1':
 						this.previousValue = '1';
 						this.previousValue = Number(this.display);
 						this.display += '1';
 					break;
+
 					case "2":
 						this.previousValue = 2;
 						this.previousValue = Number(this.display);
 						this.display += "2";
 					break;
+
 					case "3":
 						this.previousValue = 3;
 						this.previousValue = Number(this.display);
 						this.display += "3";
 					break;
+
 					case "4":
 						this.previousValue = 4;
 						this.previousValue = Number(this.display);
 						this.display += "4";
 					break;
+
 					case "5":
 						this.previousValue = 5;
 						this.previousValue = Number(this.display);
 						this.display += "5";
 					break;
+
 					case "6":
 						this.previousValue = 6;
 						this.previousValue = Number(this.display);
 						this.display += "6";
 					break;
+
 					case "7":
 						this.previousValue = 7;
 						this.previousValue = Number(this.display);
 						this.display += "7";
 					break;
+
 					case "8":
 						this.previousValue = 8;
 						this.previousValue = Number(this.display);
 						this.display += "8";
 					break;
+
 					case "9":
 						this.previousValue = 9;
 						this.previousValue = Number(this.display);
 						this.display += "9";
 					break;
+
 					case "0":
 						this.previousValue = 0;
 						this.previousValue = Number(this.display);
 						this.display += "0";
 					break;
+
+					/* 	special-keys	 */
+
+					/* 	empty display (Clear)	*/
 					case 'Escape':
 					case 'Backspace':
 						this.display = '';
 					break;
+
+					/* 	negate the displayed value	 +/- 	(⌥ -) */
+					case '–':
+						this.display *= -1;
+					break;
+
+					/*	 make the number to a decimal %	*/
 					case '%':
 						this.display /= 100;
 					break;
+
+					/* 	Do not allow more than one . in a number	*/
 					case '.':
-						this.previousValue = '.';
+						if (this.previousValue = '.' && this.display.includes('.')) return;
 						this.previousValue = Number(this.display);
-						this.display += '.';				
+						this.display += '.';
+					break;
 					}
 			},
 
@@ -129,6 +156,7 @@
 					'-': (a, b) => a - b,
 					'+': (a, b) => a + b,
 				},
+
 				buttonRows: [
 					/* First row */
 					[{ 
@@ -229,7 +257,7 @@ body {
 	color: white;
 	text-align: right;
 	padding: 0.5em;
-	border-radius: 5%;
+	/* border-radius: 5%; */
 	background-color: darkgray;
 	font-size: 1.5em;
 }
