@@ -10,7 +10,7 @@
 	export default {
 		components: {
 			Calculator,
-			// Converter
+			Converter
 		}
 	}
 </script>
