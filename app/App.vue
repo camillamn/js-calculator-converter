@@ -1,15 +1,15 @@
 <template>
-	<Calculator/>
+	<!-- <Calculator/> -->
 	<Converter/>
 </template>
 
 <script>
-	import Calculator from '../components/Calculator.vue'
+	// import Calculator from '../components/Calculator.vue'
 	import Converter from '../components/Converter.vue'
 
 	export default {
 		components: {
-			Calculator,
+			// Calculator,
 			Converter
 		}
 	}

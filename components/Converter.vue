@@ -1,41 +1,78 @@
-<!-- https://www.youtube.com/watch?v=XmIE_o-LenM  -->
-
 <template>
-	<main>
-		<h4>Length-converter</h4>
-		<div class="container">
-			<div class="input-box">
-				<label for="mm">Millimeter:</label>
-				<input 
-					type="number"
-					id="mm"
-					value="10">
-			</div>
-			<div class="input-box">
-				<label for="cm">Centimeter:</label>
-				<input 
-					type="number"
-					id="cm">
-			</div>
-			<div class="input-box">
-				<label for="meter">Meter:</label>
-				<input 
-					type="number"
-					id="m">
-			</div>
-			<div class="input-box">
-				<label for="km">Kilometer:</label>
-				<input 
-					type="number"
-					id="km">
-			</div>
+<!-- {{ selectedOutputMetric }} -->
 
+<main>
+	<h2>Length-converter</h2>
+	<div class="container">
+		<div v-for="length in lengthConvert">
+			<label> {{length.id}} </label>
+			<input 
+				id:="length.id"
+				type="number"
+				v-model="length.input"
+				@input="lengthConverter(length.id)">
 		</div>
-	</main>
+	</div>
+</main>
+
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				lengthConvert:[
+					{
+						id: 'Milimeter',
+						input: '0'
+					},
+					{
+						id: 'Centimeter',
+						input: '0'
+					},
+					{
+						id: 'Meter',
+						input: '0'
+					},
+					{
+						id: 'Kilometer',
+						input: '0'
+					},
+				]
+			}
+		},
 
+		methods: {
+			lengthConverter(source) {
+				let vm = this,
+					milimeter = vm.lengthConvert[0],
+					centimeter = vm.lengthConvert[1],
+					meter = vm.lengthConvert[2],
+					kilometer = vm.lengthConvert[3];
+
+				if (source =='milimeter') {
+					centimeter.input=(milimeter.input/10).toFixed(2);
+					meter.input=(milimeter.input/100).toFixed(2);
+					kilometer.input=(milimeter.input/10000).toFixed(2);
+				}
+				if (source =='centimeter') {
+					milimeter.input=(centimeter.input*10).toFixed(2);
+					meter.input=(centimeter.input/10).toFixed(2);
+					kilometer.input=(centimeter.input/10000).toFixed(2);
+				}
+				if (source=='meter') {
+					milimeter.input=(meter.input/10).toFixed(2);
+					centimeter.input=(meter.input/100).toFixed(2);
+					kilometer.input=(meter.input/10000).toFixed(2);
+				};
+				if (source=='kilometer') {
+					milimeter.input=(kilometer.input/10).toFixed(2);
+					centimeter.input=(kilometer.input/100).toFixed(2);
+					meter.input=(kilometer.input/10000).toFixed(2);
+				};
+			}
+		}
+	}
 
 </script>
 

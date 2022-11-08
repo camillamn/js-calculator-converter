@@ -176,8 +176,7 @@
 					/* Second row */
 					[{ 
 						text: '1',
-						type: 'number',
-						key: '1'
+						type: 'number'
 					}, {
 						text: '2',
 						type: 'number'
