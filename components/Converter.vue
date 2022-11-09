@@ -1,7 +1,7 @@
 <template>
 
 <main>
-	<h2>Metric-converter</h2>
+	<div class="title">Metric-converter</div>
 	<div class="container">
 		<div v-for="length in lengthConvert">
 			<label> {{length.id}} </label>
@@ -83,6 +83,12 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.title {
+	font-size: 1.3em;
+	display: flex;
+	justify-content: center;
 }
 
 .container {
