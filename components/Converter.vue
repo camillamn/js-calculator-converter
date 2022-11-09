@@ -9,7 +9,6 @@
 				id:="length.id"
 				type="number"
 				v-model="length.input"
-				placeholder="millimeter"
 				@input="lengthConverter(length.id)">
 		</div>
 	</div>
@@ -51,24 +50,24 @@
 					meter = inputNumber.lengthConvert[3]
 
 				if (source == 'Millimeter') {
-					centimeter.input=(millimeter.input/10).toFixed(2);
-					decimeter.input=(millimeter.input/100).toFixed(2);
-					meter.input=(millimeter.input/1000).toFixed(2);
+					centimeter.input=(millimeter.input/10);
+					decimeter.input=(millimeter.input/100);
+					meter.input=(millimeter.input/1000);
 				} else
 				if (source == 'Centimeter') {
-					millimeter.input=(centimeter.input*10).toFixed(2);
-					decimeter.input=(centimeter.input/10).toFixed(2);
-					meter.input=(centimeter.input/100).toFixed(2);
+					millimeter.input=(centimeter.input*10);
+					decimeter.input=(centimeter.input/10);
+					meter.input=(centimeter.input/100);
 				} else
 				if (source == 'Decimeter') {
-					millimeter.input=(decimeter.input*100).toFixed(2);
-					centimeter.input=(decimeter.input*10).toFixed(2);
-					meter.input=(decimeter.input/10).toFixed(2);
+					millimeter.input=(decimeter.input*100);
+					centimeter.input=(decimeter.input*10);
+					meter.input=(decimeter.input/10);
 				} else
 				if (source == 'Meter.input') {
-					millimeter.input=(meter.input*1000).toFixed(2);
-					centimeter.input=(meter.input*100).toFixed(2);
-					decimeter.input=(meter.input*10).toFixed(2);
+					millimeter.input=(meter.input*1000);
+					centimeter.input=(meter.input*100);
+					decimeter.input=(meter.input*10);
 				}
 			}
 		}
