@@ -1,8 +1,7 @@
 <template>
-<!-- {{ selectedOutputMetric }} -->
 
 <main>
-	<h2>Length-converter</h2>
+	<h2>Metric-converter</h2>
 	<div class="container">
 		<div v-for="length in lengthConvert">
 			<label> {{length.id}} </label>
@@ -10,6 +9,7 @@
 				id:="length.id"
 				type="number"
 				v-model="length.input"
+				placeholder="millimeter"
 				@input="lengthConverter(length.id)">
 		</div>
 	</div>
@@ -24,52 +24,52 @@
 				lengthConvert:[
 					{
 						id: 'Millimeter',
-						input: '0'
+						input: 0
 					},
 					{
 						id: 'Centimeter',
-						input: '0'
+						input: 0
 					},
 					{
 						id: 'Decimeter',
-						input: '0'
+						input: 0
 					},
 					{
 						id: 'Meter',
-						input: '0'
+						input: 0
 					},
 				]
 			}
 		},
 
-		methods: {
+		methods:{
 			lengthConverter(source) {
-				let vm = this,
-					millimeter = vm.lengthConvert[0],
-					centimeter = vm.lengthConvert[1],
-					decimeter = vm.lengthConvert[2],
-					meter = vm.lengthConvert[3];
+				let inputNumber = this,
+					millimeter = inputNumber.lengthConvert[0],
+					centimeter = inputNumber.lengthConvert[1],
+					decimeter = inputNumber.lengthConvert[2],
+					meter = inputNumber.lengthConvert[3]
 
-				if (source =='millimeter') {
+				if (source == 'Millimeter') {
 					centimeter.input=(millimeter.input/10).toFixed(2);
 					decimeter.input=(millimeter.input/100).toFixed(2);
 					meter.input=(millimeter.input/1000).toFixed(2);
-				}
-				if (source =='centimeter') {
+				} else
+				if (source == 'Centimeter') {
 					millimeter.input=(centimeter.input*10).toFixed(2);
 					decimeter.input=(centimeter.input/10).toFixed(2);
 					meter.input=(centimeter.input/100).toFixed(2);
-				}
-				if (source=='decimeter') {
+				} else
+				if (source == 'Decimeter') {
 					millimeter.input=(decimeter.input*100).toFixed(2);
 					centimeter.input=(decimeter.input*10).toFixed(2);
 					meter.input=(decimeter.input/10).toFixed(2);
-				};
-				if (source=='meter') {
+				} else
+				if (source == 'Meter.input') {
 					millimeter.input=(meter.input*1000).toFixed(2);
 					centimeter.input=(meter.input*100).toFixed(2);
 					decimeter.input=(meter.input*10).toFixed(2);
-				};
+				}
 			}
 		}
 	}
@@ -79,11 +79,15 @@
 <style>
 
 body {
+	width: 100vw;
 	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .container {
-	width: 30vw;
+	width: 50vw;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;
