@@ -1,3 +1,4 @@
+<!-- Inspired by https://www.youtube.com/watch?v=8ypiRFlXZG4  -->
 <template>
 
 <main>
@@ -92,7 +93,7 @@ body {
 }
 
 .container {
-	width: 50vw;
+	width: 30vw;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;

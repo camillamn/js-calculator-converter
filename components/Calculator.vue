@@ -1,4 +1,4 @@
-<!-- I have been inspired by https://www.youtube.com/watch?v=MRsDx3sFKOs and borrowed parts of the setup from this video-->
+<!-- Inspired by https://www.youtube.com/watch?v=MRsDx3sFKOs and borrowed parts of the setup from this video-->
 
 <template>
 		<main>
