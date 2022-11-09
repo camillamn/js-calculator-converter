@@ -31,7 +31,7 @@
 			handleWindowKeyUp(event) {
 				switch(event.key) {
 
-					/* 	numbers-keys	 */
+					/* 	number-keys	 */
 					case '1':
 						this.previousValue = '1';
 						this.previousValue = Number(this.display);
@@ -116,6 +116,9 @@
 						this.previousValue = Number(this.display);
 						this.display += '.';
 					break;
+
+					/*		Operators	 */
+
 					}
 			},
 
