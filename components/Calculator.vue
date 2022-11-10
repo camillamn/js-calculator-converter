@@ -10,8 +10,11 @@
 				<div class="button-row" v-for="row in buttonRows">
 					<div
 						@click="buttonClick(button)"
-						:class="{operator: button.type == 'operator'}, {special: button.type == 'special'}"
 						class="button" 
+						:class="
+							{operator: button.type == 'operator'}, 
+							{special: button.type == 'special'},
+							{number: button.type == 'number'}"
 						v-for="button in row">
 						{{ button.text }}
 					</div>
@@ -106,9 +109,10 @@
 					break;
 
 					/*	 make the number to a decimal %	*/
-					case '%':
-						this.display /= 100;
-					break;
+					// case '%':
+					// 	if (this.previousValue = Number(this.display) )
+					// 	this.display /= 100;
+					// break;
 
 					/* 	Do not allow more than one . in a number	*/
 					case '.':
@@ -117,37 +121,50 @@
 						this.display += '.';
 					break;
 
-					/*		Operators	 */
+					// case 'Enter':
+					// 	this.display = 
 
+					// /*		Operators	 */
+					// case '+':
+					// 	this.display = this.operations(this.previousValue += this.display);
 					}
 			},
 
 			buttonClick(button) {
-				if(button.type == 'number') {
+				const previousValueAsNumber = Number(this.previousValue);
+				const displayAsNumber = Number(this.display);
+				const percentValueAsNumber = ((this.previousValue * 100) / this.display);
+
+				if (button.type == 'number') {
 					if (this.previousValue === null) {
-						this.previousValue = Number(this.display);
+						this.previousValue = displayAsNumber;
 						this.display = '';
 					}
 					if (button.text == '.' && this.display.includes('.')) return;
-					this.display += button.text;
-				} else if (button.text == 'C') {
-					this.display = '';
-				} else if (button.text == '+/-') {
-					this.display *= -1;
-				} else if (button.text == '%') {
-					this.display /= 100;
-				} else if (button.text == '=') {
-					this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
-					this.currentOperator = '';
-				} else if (button.type == 'operator') {
-					if (this.currentOperator) {
-						this.display = this.operations[this.currentOperator](+this.previousValue, +this.display);
-					};
-					this.previousValue = null;
-					this.currentOperator = button.text;
+						this.display += button.text;
+					} else if (button.text == 'C') {
+						this.display = '';
+					} else if (button.text == 'CE') {
+						this.display = this.previousValue;
+					} else if (button.text == '+/-') {
+						this.display *= -1;
+					} else if (button.text == '%') {
+						// if (this.display) {
+						// (this.previousValue, this.display);
+						// } 
+						this.display /= 100;
+					} else if (button.text == '=') {
+						this.display = this.operations[this.currentOperator](previousValueAsNumber, displayAsNumber);
+						this.currentOperator = '';
+					} else if (button.type == 'operator') {
+						if (this.currentOperator) {
+							this.display = this.operations[this.currentOperator](previousValueAsNumber, displayAsNumber);
+						};
+						this.previousValue = null;
+						this.currentOperator = button.text;
 				}
 			},
-			},
+		},
 			data: () => ({
 				display: '',
 				previousValue: '',
@@ -166,11 +183,14 @@
 						text: 'C',
 						type: 'special',
 					}, {
+						text: 'CE',
+						type: 'special'
+					}, {
 						text: '+/-',
 						type: 'special'
 					}, { 
 						text: '%',
-						type: 'special'
+						type: 'operator'
 					}, {
 						text: '÷',
 						type: 'operator'
