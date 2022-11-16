@@ -65,7 +65,7 @@
 					centimeter.input=(decimeter.input*10);
 					meter.input=(decimeter.input/10);
 				} else
-				if (source == 'Meter.input') {
+				if (source == 'Meter') {
 					millimeter.input=(meter.input*1000);
 					centimeter.input=(meter.input*100);
 					decimeter.input=(meter.input*10);
