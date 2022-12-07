@@ -109,11 +109,10 @@
 						this.display *= -1;
 					break;
 
-					/*	 make the number to a decimal %	*/
-					// case '%':
-					// 	if (this.previousValue = Number(this.display) )
-					// 	this.display /= 100;
-					// break;
+					/*	 calculate what the given percentage of the number in the display is	*/
+					case '%':
+						this.display = (this.previousValue / 100) * this.display;
+					break;
 
 					/* 	Do not allow more than one . in a number	*/
 					case '.':
