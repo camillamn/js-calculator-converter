@@ -36,63 +36,63 @@
 
 					/* 	number-keys	 */
 					case '1':
-						this.previousValue = '1';
+						this.previousValue = 1;
 						this.previousValue = Number(this.display);
 						this.display += '1';
 					break;
 
-					case "2":
-						this.previousValue = 2;
+					case '2':
+						this.previousValue = '2';
 						this.previousValue = Number(this.display);
-						this.display += "2";
+						this.display += '2';
 					break;
 
-					case "3":
-						this.previousValue = 3;
+					case '3':
+						this.previousValue = '3';
 						this.previousValue = Number(this.display);
-						this.display += "3";
+						this.display += '3';
 					break;
 
-					case "4":
+					case '4':
 						this.previousValue = 4;
 						this.previousValue = Number(this.display);
-						this.display += "4";
+						this.display += '4';
 					break;
 
-					case "5":
+					case '5':
 						this.previousValue = 5;
 						this.previousValue = Number(this.display);
-						this.display += "5";
+						this.display += '5';
 					break;
 
-					case "6":
+					case '6':
 						this.previousValue = 6;
 						this.previousValue = Number(this.display);
-						this.display += "6";
+						this.display += '6';
 					break;
 
-					case "7":
+					case '7':
 						this.previousValue = 7;
 						this.previousValue = Number(this.display);
-						this.display += "7";
+						this.display += '7';
 					break;
 
-					case "8":
+					case '8':
 						this.previousValue = 8;
 						this.previousValue = Number(this.display);
-						this.display += "8";
+						this.display += '8';
 					break;
 
-					case "9":
+					case '9':
 						this.previousValue = 9;
 						this.previousValue = Number(this.display);
-						this.display += "9";
+						this.display += '9';
 					break;
 
-					case "0":
+					case '0':
 						this.previousValue = 0;
 						this.previousValue = Number(this.display);
-						this.display += "0";
+						this.display += '0';
 					break;
 
 
