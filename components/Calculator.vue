@@ -150,13 +150,7 @@
 					} else if (button.text == '+/-') {
 						this.display *= -1;
 					} else if (button.text == '%') {
-						// if (this.display) {
-						// 	this.display = this.operations[this.currentOperator](previousValueAsNumber, percentValueAsNumber);
-						// if ();
 						this.display = percentValueAsNumber;
-					// 	if (this.display) {
-					// 	// (this.previousValue, this.display);
-					// 	// } 
 					} else if (button.text == '=') {
 						this.display = this.operations[this.currentOperator](previousValueAsNumber, displayAsNumber);
 						this.currentOperator = '';
