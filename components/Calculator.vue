@@ -102,6 +102,7 @@
 					case 'Escape':
 					case 'Backspace':
 						this.display = '';
+						this.previousValue = '';
 					break;
 
 					/* 	negate the displayed value	 +/- 	(⌥ -) */
@@ -121,8 +122,9 @@
 						this.display += '.';
 					break;
 
-					// case 'Enter':
-					// 	this.display = 
+					case 'Enter':
+					this.display = this.operations[this.currentOperator](this.previousValue, this.display);
+					break;
 
 					// /*		Operators	 */
 					// case '+':
@@ -144,6 +146,7 @@
 						this.display += button.text;
 					} else if (button.text == 'C') {
 						this.display = '';
+						this.previousValue = '';
 					} else if (button.text == 'CE') {
 						this.display = this.previousValue;
 					} else if (button.text == '+/-') {
