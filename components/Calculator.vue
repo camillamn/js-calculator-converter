@@ -95,6 +95,7 @@
 						this.display += "0";
 					break;
 
+
 					/* 	special-keys	 */
 
 					/* 	empty display (Clear)	*/
@@ -133,7 +134,7 @@
 			buttonClick(button) {
 				const previousValueAsNumber = Number(this.previousValue);
 				const displayAsNumber = Number(this.display);
-				const percentValueAsNumber = ((this.previousValue * 100) / this.display);
+				const percentValueAsNumber = Number((this.previousValue / 100) * this.display);
 
 				if (button.type == 'number') {
 					if (this.previousValue === null) {
@@ -150,14 +151,17 @@
 						this.display *= -1;
 					} else if (button.text == '%') {
 						// if (this.display) {
-						// (this.previousValue, this.display);
-						// } 
-						this.display /= 100;
+						// 	this.display = this.operations[this.currentOperator](previousValueAsNumber, percentValueAsNumber);
+						// if ();
+						this.display = percentValueAsNumber;
+					// 	if (this.display) {
+					// 	// (this.previousValue, this.display);
+					// 	// } 
 					} else if (button.text == '=') {
 						this.display = this.operations[this.currentOperator](previousValueAsNumber, displayAsNumber);
 						this.currentOperator = '';
 					} else if (button.type == 'operator') {
-						if (this.currentOperator) {
+						 if (this.currentOperator) {
 							this.display = this.operations[this.currentOperator](previousValueAsNumber, displayAsNumber);
 						};
 						this.previousValue = null;
@@ -175,6 +179,7 @@
 					'×': (a, b) => a * b,
 					'-': (a, b) => a - b,
 					'+': (a, b) => a + b,
+					// '%': (a, b) => (b / a) * 100,
 				},
 
 				buttonRows: [
@@ -190,7 +195,7 @@
 						type: 'special'
 					}, { 
 						text: '%',
-						type: 'operator'
+						type: 'special'
 					}, {
 						text: '÷',
 						type: 'operator'
@@ -264,24 +269,25 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 20px;
 }
 
 .calculator {
-	width: 30vw;
+	width: 250px;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;
 	background-color: lightgrey;
+	padding: 0.8rem;
 }
 
 .display {
-	height: 2em;
+	height: 3rem;
 	color: white;
 	text-align: right;
 	padding: 0.5em;
-	/* border-radius: 5%; */
 	background-color: darkgray;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 }
 
 .buttons {

@@ -86,6 +86,14 @@ body {
 	align-items: center;
 }
 
+input {
+	display: block;
+	width: 100%;
+	font-size: 1rem;
+	padding: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
 .title {
 	font-size: 1.3em;
 	display: flex;
@@ -93,7 +101,7 @@ body {
 }
 
 .container {
-	width: 30vw;
+	width: 250px;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	border-radius: 20px;
 	overflow: hidden;
@@ -101,17 +109,5 @@ body {
 	padding: 1em;
 }
 
-.input-box input {
-	display: block;
-	width: 100%;
-	font-size: 1em;
-	padding: 0.2em;
-	margin-bottom: 0.2em;
-}
 
-.input-box label {
-	display: block;
-	font-size: 1em;
-	margin-bottom: 0.2em;
-}
 </style>
